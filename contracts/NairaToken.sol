@@ -9,10 +9,9 @@ contract BaseToken {
     uint256 totalSupply;
     address owner;
 
-    //making an amount tracable by address
+    
     mapping(address => uint256) balances;
-    //making an amount tracable by address A  and address A traced by address B
-    //key => (key => value)
+    
     mapping(address => mapping(address => uint256)) allow;
 
     constructor(string memory _name, string memory _symbol) {
@@ -116,7 +115,7 @@ contract BaseToken {
         emit Transfer(_address, address(0), _amount);
     }
 
-    //method called in the constructor
+    
     function mint(uint256 _amount, address _addr) internal {
         uint256 actualSupply = _amount * (10**18);
         balances[_addr] = balances[_addr] + actualSupply;

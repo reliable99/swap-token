@@ -9,10 +9,9 @@ contract CeloToken {
     uint256 totalSupply;
     address owner;
 
-    //making an amount tracable by address
+    
     mapping(address => uint256) balances;
-    //making an amount tracable by address A  and address A traced by address B
-    //key => (key => value)
+    
     mapping(address => mapping(address => uint256)) allow;
 
     constructor(string memory _name, string memory _symbol) {

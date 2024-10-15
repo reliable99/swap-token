@@ -3,7 +3,7 @@ pragma solidity 0.8.27;
 import {IERC20} from "./IERC20.sol";
 
 contract SwapToken {
-    // create an interface of both token and s global state for the exchangerate
+    
     IERC20 public baseToken;
     IERC20 public celoToken;
     uint256 public exchangeRate;
@@ -25,7 +25,7 @@ contract SwapToken {
         uint256 celoAmount
     );
 
-    // construtor args [baseToken and celoToken contract addresses, xchange rate which give base more value than celo --> 1 Base = 2 Celo, 1 Celo = 0.5 Base]
+    
     constructor(address _baseToken, address _celoToken, uint256 _exchangeRate) {
         baseToken = IERC20(_baseToken);
         celoToken = IERC20(_celoToken);
@@ -34,7 +34,7 @@ contract SwapToken {
 
     function swapBaseToCelo(uint256 _amount) public {
         require(msg.sender != address(0), "Not allowed");
-        uint256 celoAmount = _amount * exchangeRate; // exchanging 2 Base with 2 as exchange rate will be 2 * 2 = 4 Celo
+        uint256 celoAmount = _amount * exchangeRate; 
         require(
             celoToken.balanceOf(address(this)) >= celoAmount,
             "Not enough Celo Token"
@@ -82,4 +82,3 @@ contract SwapToken {
     }
 }
 
-//  The require() statement is to ensure txn validity, manage errors effectively while ensuring that the contract behaves as expected and protecting it from unexpected situations.
